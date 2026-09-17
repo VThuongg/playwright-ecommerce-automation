@@ -1,0 +1,21 @@
+import { Page } from "@playwright/test";
+
+export class CheckoutPage{
+    constructor (private page: Page) {};
+
+    async goToCheckout() {
+        await this.page.getByRole('button', { name: 'Checkout' }).click();
+    }
+
+    async fillInfo(firstName: string, lastName: string, postalCode: string) {
+        await this.page.getByTestId('firstName').fill(firstName);
+        await this.page.getByTestId('lastName').fill(lastName);
+        await this.page.getByTestId('postalCode').fill(postalCode);
+
+        await this.page.getByRole('button', {name: 'Continue'}).click();
+    }
+
+    async finishOrder() {
+        await this.page.getByRole('button', { name: 'Finish' }).click();
+    }
+}
