@@ -1,10 +1,14 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
-export class ProductSearch{
-    constructor (private page: Page){};
+export class ProductSearch {
+    readonly productItems: Locator;
+
+    constructor(private page: Page) {
+        this.productItems = this.page.locator('.product-image-wrapper');
+    }
 
     async goto() {
-        await this.page.goto('https://automationexercise.com/products')
+        await this.page.goto('https://automationexercise.com/products');
     }
 
     async search(keyword: string) {
@@ -12,12 +16,12 @@ export class ProductSearch{
         await this.page.locator('#submit_search').click();
     }
 
-    async getProductCount(){
-        return await this.page.locator('.product-image-wrapper').count();
+    async getProductCount(): Promise<number> {
+        return await this.productItems.count();
     }
 
     async addToCart(productName: string) {
-        const product = this.page.locator('.product-image-wrapper').filter({ hasText: productName });
+        const product = this.productItems.filter({ hasText: productName });
         await product.hover();
         await product.getByText('Add to cart').first().click();
     }

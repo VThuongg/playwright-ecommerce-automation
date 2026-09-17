@@ -123,8 +123,8 @@ npx allure generate allure-results --clean -o allure-report
 npx allure open allure-report
 ```
 
-![Allure Report Overview](https://raw.githubusercontent.com/allure-framework/allure2/master/docs/img/report_overview.png)
-*(Hình ảnh minh họa báo cáo Allure Dashboard sau khi thực thi toàn bộ kịch bản test)*
+![Allure Report Overview](./image/allure-report.png)
+*(Hình ảnh thực tế báo cáo Allure Dashboard sau khi thực thi toàn bộ kịch bản test)*
 
 ---
 
