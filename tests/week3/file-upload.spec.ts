@@ -5,10 +5,10 @@ test('upload file thành công', async ({ page }) => {
 
 
 
-  await page.locator('#file-upload').setInputFiles('C:/Users/ADMIN/Downloads/AutomationTest/playwright-learning/tests/test-files/sample.txt');
+  await page.locator('#file-upload').setInputFiles('tests/test-files/sample.txt');
 
-  await page.getByRole('button', {name: 'Upload'}).click();
+  await page.getByRole('button', { name: 'Upload' }).click();
 
-  await expect(page.getByRole('heading', {name: 'File Uploaded!'})).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'File Uploaded!' })).toBeVisible();
 
 });
